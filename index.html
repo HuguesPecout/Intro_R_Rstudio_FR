@@ -1,0 +1,2647 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Introduction à R</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  { color: #cccccc; background-color: #303030; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ffcfaf; } /* Alert */
+code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #dca3a3; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #f0dfaf; } /* ControlFlow */
+code span.ch { color: #dca3a3; } /* Char */
+code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code span.co { color: #7f9f7f; } /* Comment */
+code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code span.do { color: #7f9f7f; } /* Documentation */
+code span.dt { color: #dfdfbf; } /* DataType */
+code span.dv { color: #dcdccc; } /* DecVal */
+code span.er { color: #c3bf9f; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #c0bed1; } /* Float */
+code span.fu { color: #efef8f; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+code span.kw { color: #f0dfaf; } /* Keyword */
+code span.op { color: #f0efd0; } /* Operator */
+code span.ot { color: #efef8f; } /* Other */
+code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code span.sc { color: #dca3a3; } /* SpecialChar */
+code span.ss { color: #cc9393; } /* SpecialString */
+code span.st { color: #cc9393; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #cc9393; } /* VerbatimString */
+code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/theme/black.css" id="theme">
+
+<style type="text/css">
+.reveal section img {
+  background: rgba(255, 255, 255, 0.85);
+}
+</style>
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="styles.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <link href="index_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+    <link href="index_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Introduction à R</h1>
+    <h2 class="author"><h2 class="place">
+Base du langage, packages, Rstudio et documentation
+</h2></h2>
+    <h3 class="date"><br><img src="figure/Rzine.png" width="240"/><br>
+<h3 class="mail">
+<a href="mailto:hugues.pecout@cnrs.fr" class="email">hugues.pecout@cnrs.fr</a>
+</h3>
+<img src="figure/cnrs.png" width="80" style="float:left"/><img src="figure/cist-logo-bleu_sur_blanc.png" style="float:right" width="80"/></h3>
+</section>
+
+<section><section id="section" class="title-slide slide level1" data-background="figure/calculatrice.png" data-background-size="450px"><h1></h1></section><section id="une-calculatrice" class="slide level2">
+<h2>Une calculatrice</h2>
+<p class="moyp22">
+Le langage R offre les mêmes fonctionnalités qu’une calculatrice.<br>Vous pouvez utiliser tous les opérateurs arithmétiques.
+</p>
+<div id="vide3">
+
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Nom</th>
+<th style="text-align: center;">Opérateur</th>
+<th style="text-align: center;">Exemple</th>
+<th style="text-align: center;">Résultat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Addition</td>
+<td style="text-align: center;"><strong>+</strong></td>
+<td style="text-align: center;">5 + 3</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Soustraction</td>
+<td style="text-align: center;"><strong>-</strong></td>
+<td style="text-align: center;">5 - 1</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Multiplication</td>
+<td style="text-align: center;">*</td>
+<td style="text-align: center;">5*5</td>
+<td style="text-align: center;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Division</td>
+<td style="text-align: center;"><strong>/</strong></td>
+<td style="text-align: center;">5/5</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Puissance</td>
+<td style="text-align: center;"><strong>^</strong></td>
+<td style="text-align: center;">5^5</td>
+<td style="text-align: center;">3125</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Modulo</td>
+<td style="text-align: center;"><strong>%%</strong></td>
+<td style="text-align: center;">5 %% 5</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Quotient Décimal</td>
+<td style="text-align: center;"><strong>%/%</strong></td>
+<td style="text-align: center;">5 %/% 5</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</section><section id="une-calculatrice-1" class="slide level2">
+<h2>Une calculatrice</h2>
+<div id="vide4">
+
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div id="vide4">
+
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">(<span class="dv">3</span><span class="op">+</span><span class="dv">4</span>) <span class="op">*</span><span class="st"> </span><span class="dv">5</span><span class="op">^</span><span class="dv">3</span> <span class="op">/</span><span class="st"> </span><span class="dv">10</span></a></code></pre></div>
+<pre><code>## [1] 87.5</code></pre>
+<div id="vide4">
+
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">(<span class="fl">3.2</span> <span class="op">+</span><span class="st"> </span><span class="fl">4.1</span>) <span class="op">*</span><span class="st"> </span><span class="fl">5.9</span><span class="op">^</span><span class="dv">3</span> <span class="op">/</span><span class="st"> </span><span class="fl">10.002</span></a></code></pre></div>
+<pre><code>## [1] 149.8967</code></pre>
+</section><section id="une-super-calculatrice" class="slide level2">
+<h2>Une super calculatrice</h2>
+<p class="moyp22">
+R permet également l’utilisation d’opérateurs relationnels
+</p>
+<div id="vide3">
+
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Conditions</th>
+<th style="text-align: center;">Opérateur</th>
+<th style="text-align: center;">Exemple</th>
+<th style="text-align: center;">Résultat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">plus petit que</td>
+<td style="text-align: center;"><strong>&lt;</strong></td>
+<td style="text-align: center;">5 &lt; 5</td>
+<td style="text-align: center;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">plus grand que</td>
+<td style="text-align: center;"><strong>&gt;</strong></td>
+<td style="text-align: center;">5 &gt; 5</td>
+<td style="text-align: center;">FALSE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">plus petit ou égal à</td>
+<td style="text-align: center;"><strong>&lt;=</strong></td>
+<td style="text-align: center;">5 &lt;= 5</td>
+<td style="text-align: center;">TRUE</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">plus grand ou égal à</td>
+<td style="text-align: center;"><strong>&gt;=</strong></td>
+<td style="text-align: center;">5 &gt;= 5</td>
+<td style="text-align: center;">TRUE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">égal à</td>
+<td style="text-align: center;"><strong>==</strong></td>
+<td style="text-align: center;">5 == 5</td>
+<td style="text-align: center;">TRUE</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">différent de</td>
+<td style="text-align: center;"><strong>!=</strong></td>
+<td style="text-align: center;">5 != 5</td>
+<td style="text-align: center;">FALSE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">présent dans</td>
+<td style="text-align: center;"><strong>%in%</strong></td>
+<td style="text-align: center;">5 %in% 1:5</td>
+<td style="text-align: center;">TRUE</td>
+</tr>
+</tbody>
+</table>
+</section><section id="une-super-calculatrice-1" class="slide level2">
+<h2>Une super calculatrice</h2>
+<div id="vide4">
+
+</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># x égale à y ?</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="dv">5</span> <span class="op">==</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co"># x différent de y ?</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="dv">5</span> <span class="op">!=</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># x présent dans y ?</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co"># 5 %in% c(7,4,5,3)</span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">3</span>,<span class="dv">2</span>) <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">3</span>)</a></code></pre></div>
+<pre><code>## [1] FALSE  TRUE  TRUE FALSE</code></pre>
+</section><section id="une-super-calculatrice-2" class="slide level2">
+<h2>Une super calculatrice</h2>
+<p class="moyp2">
+Et d’opérateurs logiques :
+<p>
+<div id="vide3">
+
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Condition</th>
+<th style="text-align: center;">Opérateur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">différent de</td>
+<td style="text-align: center;"><strong>!</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">et</td>
+<td style="text-align: center;"><strong>&amp;</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ou</td>
+<td style="text-align: center;"><strong>I</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ou exclusif</td>
+<td style="text-align: center;"><strong>xor()</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">valeur manquante</td>
+<td style="text-align: center;"><strong>is.na()</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">valeur nulle</td>
+<td style="text-align: center;"><strong>is.null()</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">vrai</td>
+<td style="text-align: center;"><strong>isTRUE()</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">faux</td>
+<td style="text-align: center;"><strong>isFALSE()</strong></td>
+</tr>
+</tbody>
+</table>
+</section><section id="une-super-calculatrice-3" class="slide level2">
+<h2>Une super calculatrice</h2>
+<div id="vide4">
+
+</div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co"># Valeur manquante ?</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">is.na</span>(<span class="ot">NA</span>)</a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co"># Différent de valeur manquante ?</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="op">!</span><span class="kw">is.na</span>(<span class="dv">13</span>)</a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="co"># Contrôle à deux condtions</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="op">!</span><span class="kw">is.na</span>(<span class="dv">13</span>) <span class="op">&amp;</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</section><section id="et-bien-plus" class="slide level2">
+<h2>Et bien plus…</h2>
+<p class="moyp22">
+Des milliers de fonctions pour manipuler et analyser vos données
+</p>
+<div id="vide4">
+
+</div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="co"># Arrondir un nombre</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="kw">round</span>(<span class="fl">12.33453</span>)</a></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div id="vide4">
+
+</div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="co"># Nombre de caractères</span></a>
+<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="kw">nchar</span>(<span class="st">&quot;Bla bla bla...&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] 14</code></pre>
+</section><section id="et-bien-plus-1" class="slide level2">
+<h2>Et bien plus…</h2>
+<p class="moyp22">
+Des fonctions pour représenter vos données
+</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="co"># Représentation graphique</span></a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="kw">plot</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, <span class="dt">y =</span> <span class="dv">11</span><span class="op">:</span><span class="dv">30</span>)</a></code></pre></div>
+<p><img src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="768" /></p>
+</section></section>
+<section><section id="objets---r" class="title-slide slide level1"><h1>objets &lt;- R</h1></section><section id="programmation-orientée-objet" class="slide level2">
+<h2>Programmation Orientée Objet ?</h2>
+<p><br></p>
+<p class="medpcenter">
+Tout ce que l’on crée dans R sont des objets…
+</p>
+<p class="medpcenter">
+Mais <strong>il ne s’agit pas (comme Python) d’un langage de POO!</strong>
+</p>
+<p><br></p>
+<p class="smallpcenter2">
+La <strong>Programmation Orientée Objet</strong> est un paradigme de programmation basé sur le concept d’<strong>objets, qui peuvent contenir des données et métadonnées (attributs)</strong>, et qui sont <strong>associés à des procédures, souvent appelées méthodes</strong>.
+</p>
+<p><br></p>
+<p class="smallpcenter">
+<strong>Il est néanmoins possible de faire de la POO avec R…</strong>
+</p>
+<p><br></p>
+</section><section id="créer-un-objet" class="slide level2">
+<h2>Créer un objet</h2>
+<p class="smallpcenter">
+Pour créer un objet, donnez lui un nom et <strong>assignez-lui un contenu avec le symbole</strong> :
+</p>
+<p class="nrmp2">
+&lt;-
+</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">obj &lt;-<span class="st"> </span><span class="dv">15</span></a>
+<a class="sourceLine" id="cb24-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb24-3" data-line-number="3">obj <span class="op">+</span><span class="st"> </span><span class="dv">15</span></a></code></pre></div>
+<pre><code>## [1] 30</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">obj &lt;-<span class="st"> </span>(obj <span class="op">+</span><span class="st"> </span><span class="dv">45</span>) <span class="op">/</span><span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb26-3" data-line-number="3">obj</a></code></pre></div>
+<pre><code>## [1] 30</code></pre>
+</section><section id="créer-un-objet-1" class="slide level2">
+<h2>Créer un objet</h2>
+<p class="moyp22">
+Assignez différents types de données :
+</p>
+<div id="vide3">
+
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Type</th>
+<th style="text-align: center;">définition</th>
+<th style="text-align: center;">Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>numeric</strong></td>
+<td style="text-align: center;">nombre</td>
+<td style="text-align: center;">3 ou 4.23</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>integer</strong></td>
+<td style="text-align: center;">nombre entier</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>double</strong></td>
+<td style="text-align: center;">nombre double</td>
+<td style="text-align: center;">4.23</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>logical</strong></td>
+<td style="text-align: center;">logique ou booléen</td>
+<td style="text-align: center;">TRUE ou FALSE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>string</strong></td>
+<td style="text-align: center;">chaîne de caractères</td>
+<td style="text-align: center;">“Hello”</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>factor</strong></td>
+<td style="text-align: center;">string (modalités prédéfinies)</td>
+<td style="text-align: center;">“Hight”</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>date</strong></td>
+<td style="text-align: center;">date formatée</td>
+<td style="text-align: center;">2020-12-14</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>NA</strong></td>
+<td style="text-align: center;">absence de valeur (tout type)</td>
+<td style="text-align: center;">NA</td>
+</tr>
+</tbody>
+</table>
+</section><section id="créer-un-objet-2" class="slide level2">
+<h2>Créer un objet</h2>
+<div id="vide3">
+
+</div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">obj &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">obj &lt;-<span class="st"> </span><span class="fl">3.14</span> </a>
+<a class="sourceLine" id="cb28-3" data-line-number="3">obj &lt;-<span class="st"> </span><span class="ot">FALSE</span>    </a>
+<a class="sourceLine" id="cb28-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb28-5" data-line-number="5">obj &lt;-<span class="st"> &quot;Bla bla...&quot;</span> </a>
+<a class="sourceLine" id="cb28-6" data-line-number="6">obj &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="st">&quot;A&quot;</span>, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>))</a>
+<a class="sourceLine" id="cb28-7" data-line-number="7">obj &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-10-08&quot;</span>)</a>
+<a class="sourceLine" id="cb28-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb28-9" data-line-number="9"><span class="co"># Type de données ?</span></a>
+<a class="sourceLine" id="cb28-10" data-line-number="10"><span class="kw">class</span>(obj)</a></code></pre></div>
+<pre><code>## [1] &quot;Date&quot;</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="co"># Contenu de mon objet ?</span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="kw">print</span>(obj)</a></code></pre></div>
+<pre><code>## [1] &quot;2020-10-08&quot;</code></pre>
+</section><section id="les-fonctions" class="slide level2">
+<h2>Les fonctions</h2>
+<p class="smallpcenter">
+<strong>Une fonction est un objet</strong>
+</p>
+<p class="smallpcenter">
+<strong>Une fonction contient une série de commandes (code)</strong> qui effectuent une tâche prédéfinie. Elle prend des <strong>informations (arguments) en entrée et renvoie un résultat</strong>
+</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">elle &lt;-<span class="st"> &quot;Julie&quot;</span>  </a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">lui &lt;-<span class="st"> &quot;Thomas&quot;</span>  </a>
+<a class="sourceLine" id="cb32-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb32-4" data-line-number="4"><span class="co"># paste() pour concaténer des chaînes de caractères</span></a>
+<a class="sourceLine" id="cb32-5" data-line-number="5">elle_lui &lt;-<span class="st"> </span><span class="kw">paste</span>(elle, lui, <span class="dt">sep =</span> <span class="st">&quot; aime &quot;</span>)</a>
+<a class="sourceLine" id="cb32-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb32-7" data-line-number="7">elle_lui</a></code></pre></div>
+<pre><code>## [1] &quot;Julie aime Thomas&quot;</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co"># gsub() pour remplacer un &#39;pattern&#39; de caractère</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="kw">gsub</span>(<span class="dt">pattern =</span> <span class="st">&quot;Thomas&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;Tristan&quot;</span>, <span class="dt">x =</span> elle_lui)</a></code></pre></div>
+<pre><code>## [1] &quot;Julie aime Tristan&quot;</code></pre>
+</section><section id="les-fonctions-1" class="slide level2">
+<h2>Les fonctions</h2>
+<p class="smallpcenter" style="margin-top:50px;margin-bottom:35px;">
+<strong>Les fonctions peuvent être :</strong>
+</p>
+<ul class="pucsmall2">
+<ul>
+<li>Mises à disposition par le <strong>R base</strong> (fonctions primitives ou standards)</li>
+<li>Mises à disposition par un <strong>package</strong></li>
+<li><strong>Développées en local</strong> par vous-même.</li>
+</ul>
+</ul>
+<p class="smallpcenter" style="margin-top:60px;">
+Elles s’utilisent toujours de la même façon : <strong>nom()</strong>
+</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="co"># Construction d&#39;une fonction, qui écrit &quot;Hello&quot; dans la console</span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2">fonction_hello &lt;-<span class="st"> </span><span class="cf">function</span>() { <span class="kw">print</span>(<span class="st">&quot;Hello&quot;</span>) }</a>
+<a class="sourceLine" id="cb36-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb36-4" data-line-number="4"><span class="co"># Utilisation de la fonction</span></a>
+<a class="sourceLine" id="cb36-5" data-line-number="5"><span class="kw">fonction_hello</span>()</a></code></pre></div>
+<pre><code>## [1] &quot;Hello&quot;</code></pre>
+</section><section id="les-arguments" class="slide level2">
+<h2>Les arguments</h2>
+<p class="moyp22">
+Le plus souvent, des <strong>arguments doivent être renseignés pour utiliser une fonction</strong>. Il suffit de leur attribuer une valeur.
+</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">-20</span>, <span class="dt">to =</span> <span class="dv">22</span>, <span class="dt">by =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb38-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">20</span>,  <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb38-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb38-4" data-line-number="4"><span class="kw">plot</span>(x , y , <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>,</a>
+<a class="sourceLine" id="cb38-5" data-line-number="5">     <span class="dt">pch =</span> <span class="dv">18</span>, <span class="dt">cex =</span> <span class="fl">1.2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col=</span> <span class="st">&quot;blue&quot;</span>,</a>
+<a class="sourceLine" id="cb38-6" data-line-number="6">     <span class="dt">main =</span> <span class="st">&quot;Mon premier plot avec R&quot;</span>, </a>
+<a class="sourceLine" id="cb38-7" data-line-number="7">     <span class="dt">xlab =</span> <span class="st">&quot;Ma variable en abscisse&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Ma variable en ordonnée&quot;</span>)</a></code></pre></div>
+<p><img src="index_files/figure-revealjs/unnamed-chunk-13-1.png" width="768" /></p>
+</section><section id="les-objets" class="slide level2">
+<h2>Les objets</h2>
+<p class="moyp2">
+<strong>De nombreux objets R adaptés aux différents types de données : </strong>
+</p>
+<ul class="pucsmall3">
+<ul>
+<li><strong>Vector</strong> - <em>liste d’éléments de même nature</em></li>
+<li><strong>Data.frame</strong> - <em>Tableau de données</em></li>
+<li><strong>Matrix</strong> - <em>Matrice</em></li>
+<li><strong>Array</strong> - <em>Ensemble de matrices</em></li>
+<li><strong>List</strong> - <em>Liste d’objet</em></li>
+<li><strong>Factor</strong> - <em>vecteur avec une liste de modalités prédéfinies</em></li>
+<li><strong>Simple feature</strong> - <em>Données géographiques</em></li>
+<li><strong>Time serie</strong> - <em>Série temporelle</em></li>
+<li><strong>…</strong></li>
+</ul>
+</ul>
+</section><section id="vector" class="slide level2">
+<h2>Vector</h2>
+<p class="moyp22">
+<strong>Le vecteur est l’objet de base de R</strong>. Il permet de stocker <strong>un ou plusieurs éléments du même type</strong>.
+</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="co"># Vecteur d&#39;un unique élément de type string</span></a>
+<a class="sourceLine" id="cb39-2" data-line-number="2">nom &lt;-<span class="st"> &quot;Martina&quot;</span></a></code></pre></div>
+<p class="smallpcenter">
+<strong>La fonction c() permet de construire un vecteur de plusieurs éléments</strong>,
+</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">noms &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Martina&quot;</span>, <span class="st">&quot;Leo&quot;</span>, <span class="st">&quot;Inès&quot;</span>, <span class="st">&quot;Joshua&quot;</span>)</a>
+<a class="sourceLine" id="cb40-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb40-3" data-line-number="3">noms</a></code></pre></div>
+<pre><code>## [1] &quot;Martina&quot; &quot;Leo&quot;     &quot;Inès&quot;    &quot;Joshua&quot;</code></pre>
+</section><section id="vector-1" class="slide level2">
+<h2>Vector</h2>
+<p class="moyp22">
+Pour naviguer dans cet objet unidimensionnel, utilisez les crochets.
+</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="co"># Sélection du premier élément</span></a>
+<a class="sourceLine" id="cb42-2" data-line-number="2">noms[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb42-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb42-4" data-line-number="4"><span class="co"># Sélection des éléments 2 et 4</span></a>
+<a class="sourceLine" id="cb42-5" data-line-number="5">noms[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)]</a></code></pre></div>
+<pre><code>## [1] &quot;Leo&quot;    &quot;Joshua&quot;</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="co"># Assigner dans un nouvel objet pour garder en mémoire</span></a>
+<a class="sourceLine" id="cb44-2" data-line-number="2">Select_nom &lt;-<span class="st"> </span>noms[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</a>
+<a class="sourceLine" id="cb44-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb44-4" data-line-number="4">Select_nom</a></code></pre></div>
+<pre><code>## [1] &quot;Martina&quot; &quot;Inès&quot;</code></pre>
+</section><section id="data.frame" class="slide level2">
+<h2>Data.frame</h2>
+<p class="moyp22">
+<strong>Le data.frame correspond au tableau de données classique</strong>. il se compose de plusieurs colonnes pouvant contenir des données de nature différente. <strong>Chaque colonne d’un data.frame est un vecteur</strong>.
+</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="co"># Construction de plusieurs vecteurs de même longueur</span></a>
+<a class="sourceLine" id="cb46-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb46-3" data-line-number="3">nom &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Modibo Keïta&quot;</span>, <span class="st">&quot;Moussa Traoré&quot;</span>, <span class="st">&quot;Alpha Oumar Konaré&quot;</span>)</a>
+<a class="sourceLine" id="cb46-4" data-line-number="4">date_naissance &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1915-06-04&quot;</span>, <span class="st">&quot;1936-09-25&quot;</span>, <span class="st">&quot;1946-02-02&quot;</span>)</a>
+<a class="sourceLine" id="cb46-5" data-line-number="5">annee_arrivee_pouvoir &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1960</span>, <span class="dv">1968</span>, <span class="dv">1992</span>)</a>
+<a class="sourceLine" id="cb46-6" data-line-number="6">duree_au_pouvoir &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">8</span>, <span class="dv">23</span>, <span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb46-7" data-line-number="7">parcours_militaire &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><br></p>
+<p class="moyp">
+<strong>Utilisez la fonction data.frame() pour construire un tableau</strong>
+</p>
+</section><section id="data.frame-1" class="slide level2">
+<h2>Data.frame</h2>
+<p class="moyp22">
+<strong>Utilisez la fonction data.frame() pour construire un tableau</strong>
+</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">MyTab &lt;-<span class="st"> </span><span class="kw">data.frame</span>(nom,</a>
+<a class="sourceLine" id="cb47-2" data-line-number="2">                    date_naissance,</a>
+<a class="sourceLine" id="cb47-3" data-line-number="3">                    annee_arrivee_pouvoir,</a>
+<a class="sourceLine" id="cb47-4" data-line-number="4">                    duree_au_pouvoir,</a>
+<a class="sourceLine" id="cb47-5" data-line-number="5">                    parcours_militaire )</a>
+<a class="sourceLine" id="cb47-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb47-7" data-line-number="7">MyTab</a></code></pre></div>
+<pre><code>##                  nom date_naissance annee_arrivee_pouvoir duree_au_pouvoir
+## 1       Modibo Keïta     1915-06-04                  1960                8
+## 2      Moussa Traoré     1936-09-25                  1968               23
+## 3 Alpha Oumar Konaré     1946-02-02                  1992               NA
+##   parcours_militaire
+## 1              FALSE
+## 2               TRUE
+## 3              FALSE</code></pre>
+</section><section id="data.frame-2" class="slide level2">
+<h2>Data.frame</h2>
+<p class="moyp22">
+Utilisez les crochets pour naviguer dans un tableau : <br> MyTab[ <strong>ligne , colonne</strong> ]
+</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="co">## SELECTION PAR INDEX</span></a>
+<a class="sourceLine" id="cb49-2" data-line-number="2"><span class="co"># Première ligne et toutes les colonnes</span></a>
+<a class="sourceLine" id="cb49-3" data-line-number="3">MyTab[ <span class="dv">1</span> , ]</a>
+<a class="sourceLine" id="cb49-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb49-5" data-line-number="5"><span class="co"># Toutes les lignes  et colonnes 1, 3 et 5</span></a>
+<a class="sourceLine" id="cb49-6" data-line-number="6">MyTab[  , <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)]</a>
+<a class="sourceLine" id="cb49-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb49-8" data-line-number="8"><span class="co"># 2e ligne et colonnes 1 et 5</span></a>
+<a class="sourceLine" id="cb49-9" data-line-number="9">MyTab[<span class="dv">2</span>, <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>)]</a>
+<a class="sourceLine" id="cb49-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb49-11" data-line-number="11"><span class="co">## SELECTION PAR NOM</span></a>
+<a class="sourceLine" id="cb49-12" data-line-number="12"><span class="co"># 2e ligne et colonnes 1 et 5</span></a>
+<a class="sourceLine" id="cb49-13" data-line-number="13">MyTab[ <span class="dv">2</span> , <span class="kw">c</span>(<span class="st">&quot;nom&quot;</span>, <span class="st">&quot;parcours_militaire&quot;</span>)]</a></code></pre></div>
+<pre><code>##             nom parcours_militaire
+## 2 Moussa Traoré               TRUE</code></pre>
+</section><section id="data.frame-3" class="slide level2">
+<h2>Data.frame</h2>
+<p class="moyp22">
+Vous pouvez également utiliser le signe $ pour séléctionner une colonne : <br> <br> MyTab<strong>$</strong>date_naissance
+</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="co">## Uilisation du $</span></a>
+<a class="sourceLine" id="cb51-2" data-line-number="2"><span class="co"># Séléction colonne &#39;date_naissance&#39;</span></a>
+<a class="sourceLine" id="cb51-3" data-line-number="3">MyTab<span class="op">$</span>date_naissance</a>
+<a class="sourceLine" id="cb51-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb51-5" data-line-number="5"><span class="co"># Valeur de la seconde ligne dans la colonne &#39;date_naissance&#39;</span></a>
+<a class="sourceLine" id="cb51-6" data-line-number="6">MyTab<span class="op">$</span>date_naissance[<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb51-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb51-8" data-line-number="8"><span class="co"># Colonne &#39;parcours_militaire&#39;, ligne 1 et 3</span></a>
+<a class="sourceLine" id="cb51-9" data-line-number="9">MyTab<span class="op">$</span>date_naissance[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</a></code></pre></div>
+<pre><code>## [1] &quot;1915-06-04&quot; &quot;1946-02-02&quot;</code></pre>
+</section><section id="data.frame-4" class="slide level2">
+<h2>Data.frame</h2>
+<p class="moyp22">
+<strong>Utilisez les différents opérateurs</strong> pour sélectionner par condition :
+</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="co"># Séléction par condition</span></a>
+<a class="sourceLine" id="cb53-2" data-line-number="2">MyTab[ MyTab<span class="op">$</span>duree_au_pouvoir <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span> , ]</a>
+<a class="sourceLine" id="cb53-3" data-line-number="3"> </a>
+<a class="sourceLine" id="cb53-4" data-line-number="4"><span class="co"># Condition ET Condition</span></a>
+<a class="sourceLine" id="cb53-5" data-line-number="5">MyTab[MyTab<span class="op">$</span>annee_arrivee_pouvoir <span class="op">&gt;</span><span class="st"> </span><span class="dv">1965</span>  <span class="op">&amp;</span><span class="st">  </span>MyTab<span class="op">$</span>parcours_militaire <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>, ]</a>
+<a class="sourceLine" id="cb53-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb53-7" data-line-number="7"><span class="co"># Condition OU Condition</span></a>
+<a class="sourceLine" id="cb53-8" data-line-number="8">MyTab[MyTab<span class="op">$</span>duree_au_pouvoir <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>  <span class="op">|</span><span class="st">  </span><span class="kw">is.na</span>(MyTab<span class="op">$</span>duree_au_pouvoir), ]</a>
+<a class="sourceLine" id="cb53-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb53-10" data-line-number="10"><span class="co"># Utilisation de fonction</span></a>
+<a class="sourceLine" id="cb53-11" data-line-number="11">MyTab[<span class="kw">nchar</span>(MyTab<span class="op">$</span>nom) <span class="op">&gt;</span><span class="st"> </span><span class="dv">15</span>, ]</a></code></pre></div>
+<pre><code>##                  nom date_naissance annee_arrivee_pouvoir duree_au_pouvoir
+## 3 Alpha Oumar Konaré     1946-02-02                  1992               NA
+##   parcours_militaire
+## 3              FALSE</code></pre>
+</section><section id="list" class="slide level2">
+<h2>list</h2>
+<p class="moyp22">
+<strong>Une liste permet de stocker plusieurs objets (peu importe le type) en un seul</strong>. Une liste est une collection d’objet.
+</p>
+<p class="moyp">
+Utilisez la fonction <strong>list()</strong> pour construire une liste
+</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="co"># Vecteur de chaînes de caractères</span></a>
+<a class="sourceLine" id="cb55-2" data-line-number="2">noms &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Martina&quot;</span>, <span class="st">&quot;Leo&quot;</span>, <span class="st">&quot;Inès&quot;</span>, <span class="st">&quot;Joshua&quot;</span>)</a>
+<a class="sourceLine" id="cb55-3" data-line-number="3"><span class="co"># Vecteur de numeric</span></a>
+<a class="sourceLine" id="cb55-4" data-line-number="4">ages &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">21</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">18</span>)</a>
+<a class="sourceLine" id="cb55-5" data-line-number="5"><span class="co"># data.frame</span></a>
+<a class="sourceLine" id="cb55-6" data-line-number="6">tablo &lt;-<span class="st"> </span><span class="kw">data.frame</span>(noms, ages)</a>
+<a class="sourceLine" id="cb55-7" data-line-number="7"><span class="co"># fonction</span></a>
+<a class="sourceLine" id="cb55-8" data-line-number="8">fonction_hello &lt;-<span class="st"> </span><span class="cf">function</span>() { <span class="kw">print</span>(<span class="st">&quot;Hello&quot;</span>) }</a>
+<a class="sourceLine" id="cb55-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb55-10" data-line-number="10"><span class="co"># Construction d&#39;un objet list</span></a>
+<a class="sourceLine" id="cb55-11" data-line-number="11">Ma_list &lt;-<span class="st"> </span><span class="kw">list</span>(noms, ages, tablo, fonction_hello)</a></code></pre></div>
+<p class="moyp2">
+<strong>C’est un super objet</strong> très utile et puissant.<br> Cet objet est utilisé par plusieurs packages de référence
+</p>
+</section><section id="list-1" class="slide level2">
+<h2>List</h2>
+<p class="moyp22">
+Pour naviguer dans une liste, utilisez des <strong>doubles crochets</strong> : <br> <strong>Ma_list[[ index ]]</strong>
+</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="co"># Séléction du 1er objet de Ma_list</span></a>
+<a class="sourceLine" id="cb56-2" data-line-number="2">Ma_list[[<span class="dv">1</span>]]</a></code></pre></div>
+<pre><code>## [1] &quot;Martina&quot; &quot;Leo&quot;     &quot;Inès&quot;    &quot;Joshua&quot;</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="co"># Séléction au sein d&#39;un objet d&#39;une list :</span></a>
+<a class="sourceLine" id="cb58-2" data-line-number="2"><span class="co"># 2e ligne et 1ère colonne de mon objet 3</span></a>
+<a class="sourceLine" id="cb58-3" data-line-number="3">Ma_list[[<span class="dv">3</span>]][<span class="dv">4</span> , <span class="dv">2</span>]</a></code></pre></div>
+<pre><code>## [1] 18</code></pre>
+</section></section>
+<section><section id="r-base-packages" class="title-slide slide level1"><h1>R base + packages</h1></section><section id="r-base" class="slide level2">
+<h2>R base</h2>
+<p class="moyp22_2">
+Le langage R offre <strong>2292 fonctions de base</strong>* stockées dans 7 packages standards, <strong>installés et chargés automatiquement</strong> :
+</p>
+<ul class="xpucsmall">
+<ul>
+<li><strong>base</strong> = 1233 <strong>fonctions de base</strong> qui permettent à R de fonctionner comme un langage</li>
+<li><strong>utils</strong> = 212 <strong>fonctions utilitaires</strong> (ex : installation de package, import/export…)</li>
+<li><strong>stats</strong> = 448 <strong>fonctions statistiques</strong> pour les calculs et la génération de nombres aléatoires</li>
+<li><strong>grDevices</strong> = 109 <strong>fonctions pour la gestion des périphériques graphiques</strong></li>
+<li><strong>graphics</strong> = 87 <strong>fonctions graphiques</strong></li>
+<li><strong>methods</strong> = 203 <strong>fonctions pour définir des méthodes et classes</strong> pour les objets R</li>
+<li><strong>datasets</strong> = 416 <strong>jeux de données</strong> d’exemples</li>
+</ul>
+</ul>
+<p class="moyp2222">
+596 fonctions supplémentaires* sont également mises à disposition par l’intermédiaire de 5 autres packages pré-installés (grid, splines, stats4, tcltk, tools), mais qui ne sont pas chargés automatiquement.
+</p>
+<p class="xsmallpbis">
+* <em>Calculé le 2021-08-30</em>
+</p>
+</section><section id="r-base-1" class="slide level2">
+<h2>R base</h2>
+<p class="moyp2_2 ">
+<strong>Les fonctionnalités standards (ou primitives) proposées par R permettent de réaliser beaucoup de choses</strong>
+</p>
+<p class="moyp2" style="margin-bottom:40px;">
+Il est cependant parfois nécessaire d’<strong>installer des packages</strong> <br> <strong>pour profiter de certaines fonctionnalités</strong> :
+</p>
+<ul class="xpucsmall ">
+<ul>
+<li><strong>Gérer des types de données spécifiques</strong> (ex : géographique, image, son…)</li>
+<li><strong>Optimiser son code</strong> (fonction codées en C++, parallélisation…)</li>
+<li><strong>Interagir avec d’autres outils</strong> (web scraping, production de support…)</li>
+<li><strong>Utiliser des méthodes d’analyses spécifiques</strong> (ex : réseau, séquence, NLP…)</li>
+<li>Produire des <strong>représentations graphiques particulières</strong> et/ou élégantes</li>
+</ul>
+<ul>
+<li>…</li>
+</ul>
+</ul>
+</section><section id="packages-du-cran" class="slide level2">
+<h2>Packages du CRAN</h2>
+<p class="moyp2">
+<strong>18095* packages</strong> sont disponibles sur le <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html"><strong><em>Comprehensive R Archive Network</em></strong></a>
+</p>
+<p class="moyp222">
+L’installation d’un package peut se faire en clic-bouton avec Rstudio. Cette opération n’est à réaliser qu’une fois, sauf si vous souhaitez mettre à jour le package.
+</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="co"># Utilisez install.packages() pour installer un package en ligne de code</span></a>
+<a class="sourceLine" id="cb60-2" data-line-number="2"><span class="co"># Exemple avec le package &quot;cartography&quot;</span></a>
+<a class="sourceLine" id="cb60-3" data-line-number="3"><span class="kw">install.packages</span>(<span class="st">&quot;cartography&quot;</span>)</a></code></pre></div>
+<p class="moyp222">
+Pour utiliser les fonctions du package, <strong>chargez la librairie</strong> :
+</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="kw">library</span>(cartography)</a></code></pre></div>
+<p class="moyp222">
+Il est nécessaire de charger la librairie à chaque nouvelle session R
+</p>
+<p class="xsmallpbis">
+* <em>Calculé le 2021-08-30</em>
+</p>
+</section><section id="autres" class="slide level2">
+<h2>Autres ?</h2>
+<div id="vide2">
+
+</div>
+<p class="moyp2">
+<strong>Le</strong> <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html"><strong><em>Comprehensive R Archive Network</em></strong></a> <strong>est le système officiel</strong> de stockage et de mise à disposition des packages R. Il existe d’autres sources :
+</p>
+<div id="vide3">
+
+</div>
+<ul class="xpucsmall ">
+<ul>
+<li><a href="https://www.bioconductor.org/"><strong><em>Bioconductor</em></strong></a> qui concentre des packages portant sur l’analyse des données génomiques</li>
+<li><a href="https://r-forge.r-project.org/"><strong><em>R-forge</em></strong></a> qui est une plateforme orientée vers les développeurs</li>
+<li><a href="https://github.com/"><strong><em>GitHub</em></strong></a> qui est un service web d’hébergement et de gestion de développement de logiciels, utilisant le logiciel de gestion de versions Git</li>
+</ul>
+</ul>
+<div id="vide3">
+
+</div>
+<p class="moyp2">
+<strong>De nombreux packages fonctionnels et très intéressants sont uniquement disponibles sur GitHub…</strong> Attention, ils ne bénéficient pas du système de contrôle offert par le CRAN !
+</p>
+</section><section id="github" class="slide level2">
+<h2>GitHub</h2>
+<p class="moyp2">
+<a href="https://github.com/"><strong>GitHub</strong></a> <strong>permet aux développeurs de programmer de manière collaborative</strong>. Beaucoup de développeurs y partagent leur package, et profitent ainsi de contributions externes
+</p>
+<p align="center">
+<img src="figure/git_insee.PNG"  width="730"/>
+</p>
+</section><section id="github-1" class="slide level2">
+<h2>GitHub</h2>
+<p class="moyp222">
+<strong>Un package peut connaître une longue période de développement. Cela ne l’empêche pas d’être opérationnel</strong>. C’est par exemple le cas du package <a href="https://github.com/InseeFrLab/apinsee">apinsee</a> destiné à faciliter l’authentification aux <a href="https://api.insee.fr/catalogue/">API de l’INSEE</a>. Pour l’installer depuis GitHub :
+</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="co"># Le package remotes permet d&#39;installer un package stocké sur GitHub</span></a>
+<a class="sourceLine" id="cb62-2" data-line-number="2"><span class="kw">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</a>
+<a class="sourceLine" id="cb62-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb62-4" data-line-number="4"><span class="co"># Chargez la librairie</span></a>
+<a class="sourceLine" id="cb62-5" data-line-number="5"><span class="kw">library</span>(remotes)</a>
+<a class="sourceLine" id="cb62-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb62-7" data-line-number="7"><span class="co"># Utilisez la fonction install_github() en indiquant le nom du dépôt</span></a>
+<a class="sourceLine" id="cb62-8" data-line-number="8"><span class="kw">install_github</span>(<span class="st">&quot;inseefrlab/apinsee&quot;</span>)</a>
+<a class="sourceLine" id="cb62-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb62-10" data-line-number="10"><span class="co"># Chargez la librairie</span></a>
+<a class="sourceLine" id="cb62-11" data-line-number="11"><span class="kw">library</span>(apinsee)</a></code></pre></div>
+<p class="moyp222">
+Sur Windows, il est nécessaire d’installer <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a> pour utiliser les packages qui interagissent avec le système d’exploitation (<a href="https://cran.r-project.org/web/packages/remotes/index.html"><em>remotes</em></a>, <a href="https://cran.r-project.org/web/packages/devtools/index.html"><em>devtools</em></a>…)
+</p>
+</section></section>
+<section><section id="section-1" class="title-slide slide level1" data-background="figure/tidy.jpg" data-background-size="500px"><h1></h1></section><section id="une-opération-plusieurs-solutions" class="slide level2">
+<h2>Une opération… plusieurs solutions !</h2>
+<p><br></p>
+<p class="moyp3">
+<strong>Une opération peut être réalisée de plein de façons différentes</strong>, en utilisant des fonctions <strong>primitives</strong> ou provenant de <strong>packages</strong>.
+</p>
+<p class="moyp3">
+Chacun ses préférences. Mais <strong>il est peut être utile de connaître les utilisations les plus courantes</strong>
+</p>
+<p class="moyp4">
+<strong>Petit tour d’horizon…</strong>
+</p>
+</section><section id="import" class="slide level2">
+<h2>Import</h2>
+<div id="leftp">
+<div id="left_4">
+<div id="vide">
+
+</div>
+<p align="center">
+<img src="figure/R.png"  width="200"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html"><strong>R base</strong></a>
+</p>
+<p class="legend4">
+Fichiers texte
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="left_4">
+<p align="center">
+<img src="figure/readr.png"  width="150"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://readr.tidyverse.org/"><strong>readr</strong></a>
+</p>
+<p class="legend4">
+Tableaux (csv, tsf, fwf, log…)
+</p>
+</div>
+</div>
+<div id="vide">
+
+</div>
+<div id="leftp">
+<div id="left_4">
+<p align="center">
+<img src="figure/readxl.png"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://readxl.tidyverse.org/"><strong>readxl</strong></a>
+</p>
+<p class="legend4">
+Fichiers Excel
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="left_4">
+<p align="center">
+<img src="figure/haven_logo.png"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://haven.tidyverse.org/"><strong>haven</strong></a>
+</p>
+<p class="legend4">
+Données SPSS, Stata et SAS
+</p>
+</div>
+</div>
+</section><section id="collecte" class="slide level2">
+<h2>Collecte</h2>
+<div id="leftp">
+<div id="left_4">
+<div id="vide">
+
+</div>
+<p align="center">
+<img src="figure/rvest.png"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="http://rvest.tidyverse.org/"><strong>rvest</strong></a>
+</p>
+<p class="legend4">
+web scraping (Rstudio)
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="left_4">
+<p align="center">
+<img src="figure/plumber.png"  width="160"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://www.rplumber.io/index.html"><strong>plumber</strong></a>
+</p>
+<p class="legend4">
+Créer interface API
+</p>
+</div>
+</div>
+<div id="leftp">
+<div id="left_4">
+<div id="vide">
+
+</div>
+<p align="center">
+<img src="figure/selenium.png"  width="160"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href=""><strong>rselenium</strong></a>
+</p>
+<p class="legend4">
+web scraping (Selenium)
+</p>
+</div>
+</div>
+<div id="rightp">
+
+<p class="legend333">
+<strong>Interfaces d’API et BD</strong>
+</p>
+<div id="leftppp">
+<p class="legend444">
+<a href="http://ropengov.github.io/eurostat/articles/website/eurostat_tutorial.html"><strong>eurostat</strong></a> - <a href="http://ropengov.github.io/projects/">rOpenGov</a> package - Interface API Eurostat
+</p>
+<p class="legend444">
+<a href="https://hadrilec.github.io/insee/"><strong>insee</strong></a> - Données et métadonnées INSEE (<a href="https://api.insee.fr/catalogue/site/themes/wso2/subthemes/insee/pages/item-info.jag?name=BDM&amp;version=V1&amp;provider=insee">BDM</a>)
+<p class="legend444">
+<a href="https://github.com/nset-ornl/wbstats"><strong>wbstats</strong></a> et <a href="https://vincentarelbundock.github.io/WDI/"><strong>WDI</strong></a> - Interface API et données Banque mondiale
+</p>
+<p class="legend444">
+<a href="https://cran.r-project.org/web/packages/wpp2017/index.html"><strong>wpp2017</strong></a> - Données <a href="https://population.un.org/wpp/">UN</a> (<em>World Population Prospects 2017</em>)
+</p>
+<p class="legend444">
+<a href="https://github.com/ropensci/rnaturalearthdata"><strong>rnaturalearthdata</strong></a> - <a href="https://ropensci.org/packages/">rOpenSci</a> package - Données <a href="http://www.naturalearthdata.com/">Natural Earth</a>
+</p>
+<p class="legend444">
+<a href="https://cran.r-project.org/web/packages/osmdata/vignettes/osmdata.html"><strong>osmdata</strong></a> - <a href="https://ropensci.org/packages/">rOpenSci</a> package - Interface API <a href="https://www.openstreetmap.fr/">OpenStreetMap</a>
+</p>
+<p class="legend444">
+<a href="https://github.com/ropensci/rtweet"><strong>rtweet</strong></a> - <a href="https://ropensci.org/packages/">rOpenSci</a> package - Interface API <a href="https://twitter.com/?lang=fr">Twitter</a>
+</p>
+<p class="legend444">
+<a href="https://github.com/soodoku/tuber"><strong>tuber</strong></a> - Interface API <a href="https://www.youtube.com/?hl=fr&amp;gl=FR">Youtube</a>
+</p>
+<p class="legend444">
+<a href="https://github.com/charlie86/spotifyr"><strong>spotifyr</strong></a> - Interface API <a href="https://www.spotify.com/fr/">Spotify</a>
+</p>
+<p class="legend444">
+<a href="https://code.markedmondson.me/googleAuthR/"><strong>googleAuthR</strong></a>, <a href="https://code.markedmondson.me/googleAnalyticsR/"><strong>googleAnalyticsR</strong></a>, <a href="http://code.markedmondson.me/searchConsoleR/"><strong>searchConsoleR</strong></a>… - API’s <a href="https://www.google.com/">Google</a>
+</p>
+<p class="legend444">
+…
+</p>
+</div>
+</div>
+</section><section id="manipulation" class="slide level2">
+<h2>Manipulation</h2>
+<div id="leftpp">
+<div id="left_4">
+<div id="vide2">
+
+</div>
+<p align="center">
+<img src="figure/R.png"  width="190"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html"><strong>R base</strong></a>
+</p>
+<p class="legend4">
+Manipulation de données
+</p>
+</div>
+</div>
+<div id="leftpp">
+<div id="left_4">
+<p align="center">
+<img src="figure/datatable.png"  width="160"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://rdatatable.gitlab.io/data.table/"><strong>data.table</strong></a>
+</p>
+<p class="legend4">
+Manipulation de données
+</p>
+</div>
+</div>
+<div id="leftpp">
+<div id="left_4">
+<p align="center">
+<img src="figure/dplyr.png"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://dplyr.tidyverse.org/"><strong>dplyr</strong></a>
+</p>
+<p class="legend4">
+Manipulation de données
+</p>
+</div>
+</div>
+<div id="vide">
+
+</div>
+<div id="leftpp">
+<div id="left_4">
+<p align="center">
+<img src="figure/tidyr.png"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://tidyr.tidyverse.org/"><strong>tidyr</strong></a>
+</p>
+<p class="legend4">
+Manipulation de tableaux
+</p>
+</div>
+</div>
+<div id="leftpp">
+<div id="left_4">
+<p align="center">
+<img src="figure/lubridate.png"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://lubridate.tidyverse.org/"><strong>lubridate</strong></a>
+</p>
+<p class="legend4">
+Manipulation de dates
+</p>
+</div>
+</div>
+<div id="leftpp">
+<div id="left_4">
+<p align="center">
+<img src="figure/stringr.png"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://stringr.tidyverse.org/"><strong>stringr</strong></a>
+</p>
+<p class="legend4">
+Chaînes de caractères
+</p>
+</div>
+</div>
+</section><section id="tidyverse" class="slide level2">
+<h2>Tidyverse</h2>
+<p align="center">
+<img src="figure/tidyverse.png"  width="900"/>
+</p>
+<p class="smallpcenter2">
+Collection de packages conçues pour fonctionner ensemble et basés sur une philosophie commune. <br> Ils abordent un très grand nombre d’opérations courantes dans R, comme l’import/export, web scraping, manipulation de données, visualisation, programmation…
+</p>
+<p class="smallpcenter2">
+Elles sont en grande partie issues du travail d’<a href="http://hadley.nz/">Hadley Wickham</a>, développeur emblématique qui travaille désormais pour RStudio.
+</p>
+</section><section id="statistique-mulivariée" class="slide level2">
+<h2>Statistique mulivariée</h2>
+<p><br> <br></p>
+<div id="leftp">
+<div id="right_4">
+<p class="legend3">
+<a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html"><strong>R base</strong></a>
+</p>
+<p class="legend4">
+Statistique univariée, bivariée, <br> test de probabilité…
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="right_4">
+<p class="legend3">
+<a href="https://easystats.github.io/blog/portfolio/"><strong>easystats</strong></a>
+</p>
+<p class="legend4">
+Suite de packages pour faciliter <br> l’utilisation de techniques statistiques avancées
+</p>
+</div>
+</div>
+<p><br> <br> <br></p>
+<div id="leftp">
+<div id="right_4">
+<p class="legend3">
+<a href="http://factominer.free.fr/index_fr.html"><strong>FactoMineR</strong></a>
+</p>
+<p class="legend4">
+Analyse exploratoire multidimensionnelle <br> cf. <em>FactoInvestigate</em>, <em>factoextra</em>, <em>Factoshiny</em>…
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="right_4">
+<p class="legend3">
+<a href="http://pbil.univ-lyon1.fr/ade4/"><strong>ade4</strong></a>
+</p>
+<p class="legend4">
+Analyse exploratoire multidimensionnelle <br> avec procédures exploratoires d’essence euclidienne
+</p>
+</div>
+</div>
+<p><br> <br> <br></p>
+<div id="leftp">
+<div id="right_4">
+<p class="legend3">
+<a href="https://cran.r-project.org/web/packages/MASS/index.html"><strong>MASS</strong></a>
+</p>
+<p class="legend4">
+Fonctions issues du livre <br> <a href="https://www.springer.com/gp/book/9780387954578"><em>Modern Applied Statistics with S</em></a>
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="right_4">
+<p class="legend3">
+<a href="https://cran.r-project.org/web/packages/ExPosition/index.html"><strong>ExPosition</strong></a>
+</p>
+<p class="legend4">
+Analyse exploratoire multidimensionnelle<br> Décomposition de la valeur singulière
+</p>
+</div>
+</div>
+</section><section id="traitement-denquête" class="slide level2">
+<h2>Traitement d’enquête</h2>
+<p><br></p>
+<div id="leftpp">
+<div id="left_4">
+<div id="vide2">
+
+</div>
+<p align="center">
+<img src="figure/R.png"  width="190"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html"><strong>R base</strong></a>
+</p>
+<p class="legend4">
+Statistique basique,<br>tableaux croisés…
+</p>
+</div>
+</div>
+<div id="leftpp">
+<div id="left_4">
+<p align="center">
+<img src="figure/survey.jpg"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="http://r-survey.r-forge.r-project.org/survey/"><strong>survey</strong></a>
+</p>
+<p class="legend4">
+Construction de plan <br> d’échantillonnage complexe
+</p>
+</div>
+</div>
+<div id="vide">
+
+</div>
+<div id="leftpp">
+<div id="left_4">
+<p align="center">
+<img src="figure/questionnair.png"  width="210"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://juba.github.io/questionr/index.html"><strong>questionr</strong></a>
+</p>
+<p class="legend4">
+Contient un <em>addin</em> <br> (interface graphique)
+</p>
+</div>
+</div>
+</section><section id="analyse-textuelle" class="slide level2">
+<h2>Analyse Textuelle</h2>
+<p><br> <br></p>
+<div id="leftp">
+<div id="right_4">
+<p class="legend3">
+<a href="https://quanteda.io/"><strong>quanteda</strong></a>
+</p>
+<p class="legend4">
+Manipulation et analyse de corpus<br>Issue de l’ERC QUANTESS.
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="right_4">
+<p class="legend3">
+<a href="https://spacyr.quanteda.io/"><strong>spacyr</strong></a>
+</p>
+<p class="legend4">
+Traitement automatique du langage<br>Adaptation de la librairie Python <a href="https://spacy.io">spaCy</a>
+</p>
+</div>
+</div>
+<p><br> <br> <br></p>
+<div id="leftp">
+<div id="right_4">
+<p class="legend3">
+<a href="http://tm.r-forge.r-project.org/index.html"><strong>tm</strong></a>
+</p>
+<p class="legend4">
+Text mining<br>Statistique textuelle
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="right_4">
+<p class="legend3">
+<a href="https://github.com/juliasilge/tidytext"><strong>tidytext</strong></a>
+</p>
+<p class="legend4">
+Text mining - compatible <a href="https://www.tidyverse.org/">tidyverse</a><br>Statistique textuelle
+</p>
+</div>
+</div>
+<p><br> <br> <br></p>
+<div id="leftp">
+<div id="right_4">
+<p class="legend3">
+<a href="http://text2vec.org/"><strong>text2vec</strong></a>
+</p>
+<p class="legend4">
+Text mining et NLP<br>Bonne gestion de la mémoire
+</p>
+</div>
+</div>
+<div id="rightp">
+<p class="legend_333">
+<strong>Package avec interface graphique :</strong>
+</p>
+<div id="leftppp">
+<p class="legend_444">
+<a href="https://rtemis.hypotheses.org/r-temis-dans-rstudio"><strong>R.temis</strong></a> - Manipulation et analyse de corpus
+</p>
+<p class="legend_444">
+<a href="https://rtemis.hypotheses.org/r-temis-dans-rcmdr"><strong>RcmdrPlugin.temis</strong></a> - Interface graphique pour R.temis
+</p>
+<p class="legend_444">
+<a href="http://www.iramuteq.org/"><strong>IRaMuTeQ</strong></a> - Interface de R pour les Analyses Multidimensionnelles de Textes et de Questionnaires
+</p>
+<p class="legend_444">
+…
+</p>
+</div>
+</div>
+</section><section id="analyse-de-réseau" class="slide level2">
+<h2>Analyse de réseau</h2>
+<p><br> <br></p>
+<div id="leftp">
+<div id="right_4">
+<p class="legend3">
+<a href="https://igraph.org/r/"><strong>igraph</strong></a>
+</p>
+<p class="legend4">
+Analyse de réseau<br>Disponible en c/c++, python et Mathematica
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="right_4">
+<p class="legend3">
+<a href="https://cran.r-project.org/web/packages/tnet/tnet.pdf"><strong>tnet</strong></a>
+</p>
+<p class="legend4">
+Analyse pondérée, bimodale<br> et longitudinale des réseaux
+</p>
+</div>
+</div>
+<p><br> <br> <br></p>
+<div id="leftp">
+<div id="right_4">
+<p class="legend3">
+<a href="https://github.com/biometry/bipartite"><strong>bipartite</strong></a>
+</p>
+<p class="legend4">
+Analyse de réseau biparti<br> cf. <em>FactoInvestigate</em>, <em>factoextra</em>, <em>Factoshiny</em>…
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="right_4">
+<p class="legend3">
+<a href="https://cran.r-project.org/web/packages/blockmodeling/blockmodeling.pdf"><strong>blockmodeling</strong></a>
+</p>
+<p class="legend4">
+Modélisation de réseau valué
+</p>
+</div>
+</div>
+<p><br> <br> <br></p>
+<div id="centerp">
+<div id="right_4">
+<p class="legend3">
+<a href="https://www.stats.ox.ac.uk/~snijders/siena/"><strong>Rsiena</strong></a>
+</p>
+<p class="legend4">
+Simulation de modèles stochastiques
+</p>
+</div>
+</div>
+</section><section id="données-géographiques" class="slide level2">
+<h2>Données géographiques</h2>
+<div id="leftp">
+<div id="left_4">
+<p align="center">
+<img src="figure/sf.gif"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://r-spatial.github.io/sf/"><strong>sf</strong></a>
+</p>
+<p class="legend4">
+<strong>Import, manipulation et analyse</strong> <br> de <strong>données vectorielles</strong>
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="left_4">
+<p align="center">
+<img src="figure/cube1.png"  width="250"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://r-spatial.github.io/stars/"><strong>stars</strong></a>
+</p>
+<p class="legend4">
+<strong>Import et manipulation</strong> <br> de données <strong>raster</strong>
+</p>
+</div>
+</div>
+<div id="leftp">
+<div id="left_4">
+<p align="center">
+<img src="figure/raster.png"  width="200"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://rspatial.org/raster/pkg/index.html"><strong>raster</strong></a>
+</p>
+<p class="legend4">
+<strong>Import, manipulation et analyse</strong> <br> de données <strong>raster</strong>
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="left_4">
+<p align="center">
+<img src="figure/terra.png"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://rspatial.org/terra"><strong>terra</strong></a>
+</p>
+<p class="legend4">
+<strong>Analyse</strong> de données <strong>raster</strong> <br> <em>(En développement)</em>
+</p>
+</div>
+</div>
+</section><section id="représentation-graphique" class="slide level2">
+<h2>Représentation Graphique</h2>
+<div id="leftp">
+<div id="left_4">
+<div id="vide">
+
+</div>
+<p align="center">
+<img src="figure/R.png"  width="185"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html"><strong>R base</strong></a>
+</p>
+<p class="legend4">
+Représentation graphique standard<br> nuage de point, histogramme, Boxplot…
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="left_4">
+<p align="center">
+<img src="figure/hexggplot2.png"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://ggplot2.tidyverse.org/"><strong>ggplot2</strong></a>
+</p>
+<p class="legend4">
+Représentation graphique avancée<br> basée sur la <a href="https://www.springer.com/gp/book/9780387245447">grammaire graphique</a>
+</p>
+</div>
+</div>
+<div id="leftp">
+<div id="left_4">
+<p align="center">
+<img src="figure/r2d3.png"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://rstudio.github.io/r2d3/"><strong>r2d3</strong></a>
+</p>
+<p class="legend4">
+Représentation graphique dynamique<br>Adaptation librairie JavaScript D3
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="left_4">
+<div id="vide">
+
+</div>
+<p align="center">
+<img src="figure/plotly.png"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://plotly.com/r/"><strong>plotly</strong></a>
+</p>
+<p class="legend4">
+Graphiques interactifs<br>Adaptation librairie JavaScript
+</p>
+</div>
+</div>
+</section><section id="cartographie" class="slide level2">
+<h2>Cartographie</h2>
+<div id="leftp">
+<div id="left_4">
+<p align="center">
+<img src="figure/tmap2.png"  width="135"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html"><strong>tmap</strong></a>
+</p>
+<p class="legend4">
+Cartographie thématique
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="left_4">
+<p align="center">
+<img src="figure/cartography2.png"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://github.com/riatelab/cartography/"><strong>cartography</strong></a>
+</p>
+<p class="legend4">
+Cartographie thématique
+</p>
+</div>
+</div>
+<div id="leftp">
+<div id="left_4">
+<p align="center">
+<img src="figure/mapview.gif"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://r-spatial.github.io/mapview/"><strong>mapview</strong></a>
+</p>
+<p class="legend4">
+Carte interactive<br>basée sur API Leaflet
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="left_4">
+<br>
+<p align="center">
+<img src="figure/leaflet.png"  width="220"/>
+</p>
+</div>
+<div id="vide">
+
+</div>
+<div id="vide">
+
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://rstudio.github.io/leaflet/"><strong>leaflet</strong></a>
+</p>
+<p class="legend4">
+Adaptation librairie JavaScript
+</p>
+</div>
+</div>
+</section><section id="valorisation" class="slide level2">
+<h2>Valorisation</h2>
+<div id="leftp">
+<div id="left_4">
+<p align="center">
+<img src="figure/rmarkdown.png"  width="135"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://rmarkdown.rstudio.com/"><strong>rmarkdown</strong></a>
+</p>
+<p class="legend4">
+<em>Literate programming</em> <br> Documents balisés en markdown
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="left_4">
+<p align="center">
+<img src="figure/knitr.png"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://yihui.org/knitr/"><strong>knitr</strong></a>
+</p>
+<p class="legend4">
+Compiler les documents <br> markdown -&gt; pandoc
+</p>
+</div>
+</div>
+<div id="leftp">
+<div id="left_4">
+<p align="center">
+<img src="figure/pagedown.png"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://github.com/rstudio/pagedown"><strong>pagedown</strong></a>
+</p>
+<p class="legend4">
+Créer PDFs avec CSS (comme LaTeX)<br>Livre, thèse, article, poster…
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="left_4">
+<p align="center">
+<img src="figure/bookdown.png"  width="145"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://bookdown.org/"><strong>bookdown</strong></a>
+</p>
+<p class="legend4">
+Facilite la rédaction de livre
+</p>
+</div>
+</div>
+</section><section id="valorisation-1" class="slide level2">
+<h2>Valorisation</h2>
+<div id="leftp">
+<div id="left_4">
+<p align="center">
+<img src="figure/xaringan.png"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://github.com/yihui/xaringan"><strong>xaringan</strong></a>
+</p>
+<p class="legend4">
+Création de diaporama
+</p>
+</div>
+</div>
+<div id="rightp">
+<div id="left_4">
+<p align="center">
+<img src="figure/blogdown.png"  width="145"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://bookdown.org/yihui/blogdown/"><strong>blogdown</strong></a>
+</p>
+<p class="legend4">
+Construction de site
+</p>
+</div>
+</div>
+<div id="leftp">
+<div id="left_4">
+<p align="center">
+<img src="figure/shiny.png"  width="140"/>
+</p>
+</div>
+<div id="right_4">
+<p class="legend3">
+<a href="https://shiny.rstudio.com/"><strong>shiny</strong></a>
+</p>
+<p class="legend4">
+Application interactive
+</p>
+</div>
+</div>
+<div id="rightp">
+<p class="legend33">
+<strong>Modèles de mise en page :</strong>
+</p>
+<p class="legend44">
+<a href="https://github.com/juba/rmdformats"><strong>rmdformats</strong></a> - Templates documents HTML
+</p>
+<p class="legend44">
+<a href="https://rstudio.github.io/learnr/"><strong>learnr</strong></a> - Tutoriel interactif
+</p>
+<p class="legend44">
+<a href="https://bookdown.org/yihui/rmarkdown/revealjs.html"><strong>Reveal.js</strong></a> - Diaporama
+</p>
+<p class="legend44">
+<a href="https://rmarkdown.rstudio.com/flexdashboard/"><strong>flexdashboard</strong></a> - Tableau de bord
+</p>
+<p class="legend44">
+…
+</p>
+</div>
+</section></section>
+<section><section id="section-2" class="title-slide slide level1" data-background="figure/Rstudio_logo.png" data-background-size="700px"><h1></h1></section><section id="lide-rstudio" class="slide level2">
+<h2>l’IDE Rstudio</h2>
+<p class="smallpcenter">
+L’Environnement de Développement Intégré mis à disposition par Rstudio a sans aucun doute participé à la croissance du nombre d’utilisateur.rice.s de R.
+</p>
+<img src="figure/rstudio-running.png" width="550"/>
+</p>
+<p class="smallpcenter">
+<strong>Cette interface offre une aisance de développement autant appréciée par les débutants que par les développeurs expérimentés</strong>.
+</p>
+</section><section id="une-interface-complète" class="slide level2">
+<h2>Une interface complète</h2>
+<p align="center">
+<img src="figure/Rstudio_FR.png"   width="1000" />
+</p>
+</section><section id="fonctionnalités-clic-button" class="slide level2">
+<h2>Fonctionnalités clic-button</h2>
+<p class="moyp22">
+De nombreuses <strong>fonctions sont disponibles en bouton</strong> dans l’IDE Rstudio
+</p>
+<div id="leftp">
+<p align="center">
+<img src="figure/rstudio_1.png"  width="450"/>
+</p>
+<p class="legend" align="center">
+<em>Installation de packages</em>
+</p>
+</div>
+<div id="rightp">
+<p align="center">
+<img src="figure/rstudio_2.png"  width="405"/>
+</p>
+<p class="legend" align="center">
+<em>Export de graphique</em>
+</p>
+</div>
+</section><section id="fonctionnalités-clic-button-1" class="slide level2">
+<h2>Fonctionnalités clic-button</h2>
+<div id="left">
+<p align="center">
+<img src="figure/rstudio_5.png"  width="160"/>
+</p>
+<p class="legend" align="center">
+<em>Import/export de données</em>
+</p>
+<p align="center">
+<img src="figure/rstudio_4.png"  width="280"/>
+</p>
+<p class="legend" align="center">
+<em>Interface personnalisable</em>
+</p>
+</div>
+<div id="right">
+<p align="center">
+<img src="figure/rstudio_3.png"  width="295"/>
+</p>
+<p class="legend" align="center">
+<em>Visualisation des objets</em>
+</p>
+<p align="center">
+<img src="figure/rstudio_6.png"  width="280"/>
+</p>
+<p class="legend" align="center">
+<em>Explorateur de fichiers</em>
+</p>
+</div>
+</section><section id="les-projets-rstudio" class="slide level2">
+<h2>Les projets Rstudio</h2>
+<p class="moyp222">
+RStudio propose d’<strong>organiser son travail en projet</strong>. L’idée principale est de <strong>rassembler tous les fichiers d’un même projet dans un répertoire dédié</strong>.
+<p>
+<p align="center">
+<img src="figure/New_project.png"  width="350"/>
+</p>
+<ul class="pucsmall2">
+<ul>
+<li>Facilite le travail discontinu</li>
+<li>Améliore la portabilité de son travail</li>
+<li>Garantie la reproductibilité de son travail</li>
+</ul>
+</ul>
+</section><section id="les-projets-rstudio-1" class="slide level2">
+<h2>Les projets Rstudio</h2>
+<p align="center">
+<img src="figure/project_created.png"  width="600"/>
+</p>
+<p class="smallpcenter">
+A l’ouverture d’un projet :
+</p>
+<ul class="xpucsmall">
+<ul>
+<li><strong>Le répertoire du projet est considéré par défaut comme le répertoire de travail</strong></li>
+<li>Rstudio <strong>restaure à l’identique l’état de la session</strong> lors de sa dernière clôture (option)</li>
+<li>L’historique des commandes saisies lors des précédentes séances de travail est disponible</li>
+<li>…</li>
+</ul>
+</ul>
+</section></section>
+<section><section id="section-3" class="title-slide slide level1" data-background="figure/help.png" data-background-size="300px"><h1></h1></section><section id="aide-et-documentation" class="slide level2">
+<h2>Aide et documentation</h2>
+<p><br></p>
+<p class="moyp3">
+<strong>C’est l’un des points forts du langage</strong>
+</p>
+<p class="moyp3">
+<strong>Inclusion et partage</strong> sont au coeur de la communauté R
+</p>
+<p class="moyp3">
+<strong>Les réponses à vos questions existent</strong> forcément
+</p>
+<p class="moyp4">
+Mais <strong>où</strong> et <strong>comment</strong> chercher ?
+</p>
+</section><section id="auto-complétion" class="slide level2">
+<h2>Auto-complétion</h2>
+<p class="moyp3">
+La fonctionnalité d’<a href="https://blog.rstudio.com/2015/02/23/rstudio-v0-99-preview-code-completion/">auto-complétion</a> proposée par Rstudio peut dans un premier temps être très efficace. Utilisez la touche <em>tab</em>.
+</p>
+<p><br></p>
+<div id="left_2">
+<p align="center">
+<img src="figure/tab.png"  width="200"/>
+</p>
+</div>
+<div id="center22">
+<p align="center">
+<img src="figure/dart.png"  width="80"/>
+</p>
+</div>
+<div id="right2">
+<p align="center">
+<img src="figure/Capture2.PNG"  width="500"/>
+</p>
+</div>
+</section><section id="auto-complétion-1" class="slide level2">
+<h2>Auto-complétion</h2>
+<p align="center" style="margin-top:50px;">
+<img src="figure/Capture0.PNG"  width="800"/>
+</p>
+<p align="center">
+<img src="figure/Capture1.PNG"  width="800"/>
+</p>
+</section><section id="documentation-officielle" class="slide level2">
+<h2>Documentation officielle</h2>
+<p class="moyp2">
+Les packages (base et CRAN) sont accompagnés d’une documentation. <br> Vous pouvez y accéder en ligne de commande ou en clic-bouton :
+</p>
+<div id="left">
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="co"># Chargement de la librairie</span></a>
+<a class="sourceLine" id="cb63-2" data-line-number="2"><span class="kw">library</span>(cartography)</a>
+<a class="sourceLine" id="cb63-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb63-4" data-line-number="4"><span class="co"># help() ou ?</span></a>
+<a class="sourceLine" id="cb63-5" data-line-number="5"><span class="kw">help</span>(cartography)</a>
+<a class="sourceLine" id="cb63-6" data-line-number="6">?cartography</a>
+<a class="sourceLine" id="cb63-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb63-8" data-line-number="8"><span class="co"># Sur un package ou sur une fonction</span></a>
+<a class="sourceLine" id="cb63-9" data-line-number="9"><span class="kw">help</span>(typoLayer)</a>
+<a class="sourceLine" id="cb63-10" data-line-number="10">?typoLayer</a></code></pre></div>
+<p class="legend" style="margin-top:50px;">
+D’autres fonctions de recherche et <br> d’accès à la documentation sur <br> <a href="https://www.r-project.org/help.html">r-project.org</a>
+</p>
+</div>
+<div id="right">
+<p align="center">
+<img src="figure/help_window.PNG"  width="600"/>
+</p>
+</div>
+</section><section id="vignette-cheatsheet-site-web" class="slide level2">
+<h2>Vignette, cheatsheet &amp; site web</h2>
+<p class="moyp2">
+Certains packages proposent de la documentation plus digeste, comme une <a href="https://r-pkgs.org/vignettes.html">vignette</a>, une <a href="https://rstudio.com/resources/cheatsheets/">cheatsheet</a>, voire même un site web
+</p>
+<div id="left0">
+<p align="center">
+<img src="figure/tmap.PNG"  width="500"/>
+</p>
+<p class="legend">
+Site web du package <a href="https://r-spatial.github.io/sf/">sf</a>
+</p>
+</div>
+<div id="right0">
+<p align="center">
+<img src="figure/MTA.PNG"  width="501"/>
+</p>
+<p class="legend">
+Vignette du package <a href="https://cran.r-project.org/web/packages/MTA/vignettes/MTA.html">MTA</a>
+</p>
+</div>
+</section><section id="vignette" class="slide level2">
+<h2>Vignette</h2>
+<p class="moyp222">
+La vignette est un document qui décrit en profondeur le concept et le fonctionnement d’un package. Il y a parfois plusieurs chapitres…
+</p>
+<div id="left00">
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="co"># Vignettes des packages installés</span></a>
+<a class="sourceLine" id="cb64-2" data-line-number="2"><span class="kw">browseVignettes</span>()</a></code></pre></div>
+<p align="left">
+<img src="figure/list_vignette.PNG"  width="360"/>
+</p>
+</div>
+<div id="right00">
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="co"># Les vignettes d&#39;un package installé</span></a>
+<a class="sourceLine" id="cb65-2" data-line-number="2"><span class="kw">browseVignettes</span>(<span class="st">&quot;cartography&quot;</span>)</a></code></pre></div>
+<p align="left">
+<img src="figure/vignettescarto.png"  width="500"/>
+</p>
+<p class="legend2">
+Vignette du package <a href="https://cran.r-project.org/web/packages/cartography/vignettes/cartography.html">cartography</a>
+</p>
+</div>
+</section><section id="cheatsheet" class="slide level2">
+<h2>Cheatsheet</h2>
+<p class="moyp222">
+La Cheatsheet (antisèche) est un format crée par Rstudio. Il s’agit d’un document qui résume brièvement (une ou deux feuilles) les fonctionnalités d’un package.
+</p>
+<p align="center">
+<img src="figure/cartography.png"  width="650"/>
+</p>
+<p class="legend">
+Retrouvez la majorité des cheatsheets sur <a href="https://rstudio.com/resources/cheatsheets/">Rstudio</a>
+</p>
+</section><section id="site-web" class="slide level2">
+<h2>Site web</h2>
+<p class="moyp3">
+De nombreuses librairies de référence possèdent leur site web
+</p>
+<div id="leftter">
+<p align="center">
+<img src="figure/hexggplot2.png"  width="200"/>
+</p>
+<p class="legend3">
+<a href="https://ggplot2.tidyverse.org/"><strong>ggplot2</strong></a>
+</p>
+<p class="legend2" style="margin-top:-10px;">
+<em>Représentation graphique</em>
+</p>
+</div>
+<div id="centerter">
+<p align="center">
+<img src="figure/hexigraph.png"  width="225"/>
+</p>
+<p class="legend3">
+<a href="https://igraph.org/redirect.html"><strong>igraph</strong></a>
+</p>
+<p class="legend2" style="margin-top:-10px;">
+<em>Analyse de réseau</em>
+</p>
+</div>
+<div id="rightter">
+<p align="center">
+<img src="figure/plumber.png"  width="200"/>
+</p>
+<p class="legend3">
+<a href="https://www.rplumber.io/index.html"><strong>plumber</strong></a>
+</p>
+<p class="legend2" style="margin-top:-10px;">
+<em>Adaptation API</em>
+</p>
+</div>
+</section><section id="la-communauté-r" class="slide level2">
+<h2>La communauté R</h2>
+<p class="moyp2">
+<strong>La communauté R est très active et s’avère prolifique en matière de partage et de documentation</strong> :
+</p>
+<p class="moyp2">
+Conférences, groupes d’utilisateur.rice.s, manuels, blogs, forums, agrégateurs, MOODLE, MOOC, vidéos, listes de diffusion, réseaux sociaux…
+</p>
+<p align="center">
+<img src="figure/rladies.png"  width="200"/>
+</p>
+<p class="moyp2">
+Il y en a pour tous les goûts !
+</p>
+</section><section id="les-manuels" class="slide level2">
+<h2>Les manuels</h2>
+<p class="moyp2">
+Il existe <strong>des centaines de manuels</strong> dans différentes langues.<br>Certains sont <strong>focalisés sur une discipline ou une fonctionnalité</strong>.
+</p>
+<p class="moype">
+Quelques manuels généralistes :
+</p>
+<ul class="pucsmall2">
+<ul>
+<li><a href="https://r4ds.had.co.nz/">R for Data Science</a> - <em>Hadley Wickam</em> et <em>Garrett Grolemund</em></li>
+<li><a href="https://vigou3.github.io/introduction-programmation-r/">Introduction à R et à la programmation</a> - <em>Vincent Goulet</em></li>
+<li><a href="https://juba.github.io/tidyverse/">Une introduction à R et au tidyverse</a> - <em>Julien Barnier</em></li>
+</ul>
+</ul>
+<p class="moype">
+Quelques manuels thématiques :
+</p>
+<ul class="pucsmall2">
+<ul>
+<li><a href="http://perso.ens-lyon.fr/lise.vaudor/grimoireStat/_book/intro.html">Le Grimoire</a> - statistique - <em>Lise Vaudor</em></li>
+<li><a href="https://framabook.org/docs/Respace/RetEspace_final_20140901.pdf">R et espace</a> - géographie - Groupe <em>ElementR</em></li>
+<li><a href="https://rcarto.github.io/carto_avec_r/">Cartographie thématique avec R</a> - cartographie - <em>Timothée Giraud</em></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a> - valorisation - <em>Yihui Xie</em> &amp; <em>co</em></li>
+<li>…</li>
+</ul>
+</ul>
+</section><section id="agrégateurs-listes" class="slide level2">
+<h2>Agrégateurs &amp; listes</h2>
+<p class="moyp2">
+Plusieurs <strong>sites internet collaboratifs</strong> permettent <br> l’<strong>agrégation de contenu</strong> ou l’<strong>inventaire de ressources</strong>.
+</p>
+<p class="moype">
+Agrégateurs de contenu
+</p>
+<ul class="pucsmall2">
+<ul>
+<li><a href="https://rweekly.org/">Rweekly</a> - agrégateur de ressources diverses</li>
+<li><a href="https://www.r-bloggers.com/">R-bloggers</a> - agrégateur de billets de blog d’actualité et de tutoriels</li>
+<li><a href="http://rzine.fr/">Rzine</a> - site de référencement de documentation sur la pratique de R en SHS</li>
+<li>…</li>
+</ul>
+</ul>
+<p class="moype">
+Inventaires de ressources :
+</p>
+<ul class="pucsmall2">
+<ul>
+<li><a href="https://github.com/qinwf/awesome-R">Awesome R</a> - liste collective de packages et d’outils</li>
+<li><a href="https://github.com/frrrenchies/frrrenchies">Frrrenchies</a> - liste de ressources francophones ou utiles pour les Français.</li>
+<li>…</li>
+</ul>
+</ul>
+</section><section id="blogs" class="slide level2">
+<h2>Blogs</h2>
+<p class="moyp2">
+<strong>Certains blogs</strong>, parfois très complets, <strong>sont de véritables mines d’or !</strong>
+</p>
+<p><br></p>
+<br>
+<ul class="pucsmall2">
+<ul>
+<li><a href="https://larmarange.github.io/analyse-R/">Analyse-r</a> - traitement d’enquête - <em>Joseph Larmarange</em></li>
+<li><a href="https://dimension.usherbrooke.ca/dimension/v2ssrcadre.html">Dimension</a> - statistique &amp; sociétés - <em>Jean-Herman Guay</em></li>
+<li><a href="http://perso.ens-lyon.fr/lise.vaudor/">R-atique</a> - statistique - <em>Lise Vaudor</em></li>
+<li><a href="https://rgeomatic.hypotheses.org/">Rgeomatic</a> - géomatique - <em>Timothée Giraud</em></li>
+<li><a href="http://blog.schochastics.net/">schochastics</a> - analyse de réseau - <em>David Schoch</em></li>
+<li>…</li>
+</ul>
+</ul>
+</section><section id="forums-listes-de-diffusion" class="slide level2">
+<h2>Forums &amp; listes de diffusion</h2>
+<p class="moyp2">
+Vous avez <strong>une question ?</strong>
+</p>
+<p class="moype">
+Forums
+</p>
+<ul class="pucsmall2">
+<ul>
+<li><a href="https://stackoverflow.com/questions/tagged/r">Stackoverflow</a> - forum d’entraide généraliste</li>
+<li><a href="https://join.slack.com/t/r-grrr/shared_invite/zt-46utbgb9-uvo_bg5cbuxOV~H10YUX8w">Grrr</a> - plate-forme Slack de discussion instantanée francophone sur R</li>
+<li><a href="http://forums.cirad.fr/logiciel-R/">Cirad</a> - forum francophone d’échange sur R</li>
+<li>…</li>
+</ul>
+</ul>
+<p class="moype">
+Listes de diffusion
+</p>
+<ul class="pucsmall2">
+<ul>
+<li><a href="mailto:r-soc@groupes.renater.fr">R-soc</a> - utilisation du logiciel R en sciences sociales</li>
+<li><a href="http://rug.mnhn.fr/semin-r/">Semin-R</a> - liste de diffusion du groupe d’utilisateur.rice.s semin-R</li>
+<li>…</li>
+</ul>
+</ul>
+</section><section id="réseaux-sociaux" class="slide level2">
+<h2>Réseaux sociaux</h2>
+<p class="moyp2">
+La <strong>communauté R</strong> est très <strong>active sur les réseaux sociaux</strong>
+</p>
+<p><br></p>
+<div id="left00">
+<p align="center">
+<img src="figure/Twitterl.png"  width="170"/>
+</p>
+<p class="moyp222">
+Suivez la communauté <br> sur twitter
+</p>
+<p class="moyp3">
+<a href="https://twitter.com/search?q=%2523rstats">#rstat</a>
+</p>
+</div>
+<div id="right00">
+<p align="center">
+<img src="figure/youtube.webp"  width="310"/>
+</p>
+<p class="moyp222">
+Plusieurs chaînes Youtube existent :
+</p>
+<ul class="xpucsmall">
+<ul>
+<li>Chaîne de <a href="https://www.youtube.com/c/HussonFrancois/videos">François Husson</a></li>
+<li>Chaîne de <a href="https://www.youtube.com/user/VincentGouletIntroR/videos">Vincent Goulet</a></li>
+<li>…</li>
+</ul>
+</ul>
+</div>
+</section></section>
+<section><section id="section-4" class="title-slide slide level1" data-background="figure/R.png" data-background-size="450px"><h1></h1></section><section id="diapositives-libres-cc-by-3.0" class="slide level2">
+<h2>Diapositives libres (CC BY 3.0)</h2>
+<p><br></p>
+<p class="moyp">
+Consultation :
+</p>
+<p class="moyp222">
+<a href="https://hpecout.gitpages.huma-num.fr/Intro_R_Rstudio_FR/" class="uri">https://hpecout.gitpages.huma-num.fr/Intro_R_Rstudio_FR/</a>
+</p>
+<p><br></p>
+<p class="moyp">
+Code source :
+</p>
+<p class="moyp222">
+<a href="https://gitlab.huma-num.fr/hpecout/Intro_R_Rstudio_FR" class="uri">https://gitlab.huma-num.fr/hpecout/Intro_R_Rstudio_FR</a>
+</p>
+<p><br></p>
+</section><section id="remerciements" class="slide level2">
+<h2>Remerciements</h2>
+<p><br></p>
+<p class="moyp">
+<a href="https://github.com/rCarto">Timothée Giraud (CNRS)</a>
+</p>
+<p class="moyp">
+<a href="mailto:violaine.jurie@univ-paris-diderot.fr">Violaine Jurie (Université de Paris)</a>
+</p>
+<p class="moyp">
+<a href="https://github.com/frareb/">François Rebaudo (IRD)</a>
+</p>
+<p class="moyp">
+<a href="mailto:ronan.ysebaert@cnrs.fr">Ronan Ysebaert (Université de Paris)</a>
+</p>
+<p><br></p>
+<div id="left3">
+<p align="center">
+<img src="figure/rmarkdown.png"  width="85"/><img src="figure/knitr.png"  width="85"/>
+</p>
+</div>
+<div id="center2">
+<p class="smallpcenter">
+REVEAL.JS
+</p>
+</div>
+<div id="center3">
+<p class="moyp">
+<img src="figure/gitlab.png"  width="180"/>
+</p>
+</div>
+<div id="right3">
+<p><img src="figure/humanum.png"  width="230"/></p>
+</div>
+</section></section>
+<section><section id="merci-de-votre-attention" class="title-slide slide level1"><h1>Merci de votre attention</h1></section><section id="on-continue" class="slide level2">
+<h2>On continue ?</h2>
+<p><br></p>
+Exemple appliqué : <br> <a href="https://rysebaert.gitpages.huma-num.fr/intro_r_use_case/">Vers une chaîne de traitement reproductible</a>
+</p>
+<div class="litito">
+<ul>
+<li>Avant propos et objectifs</li>
+<li>Mise en œuvre d’une chaîne de traitement</li>
+<li>Transposer son analyse</li>
+<li>Documenter son code</li>
+<li>Reproduisez l’analyse !</li>
+</ul>
+</div>
+<p><br></p>
+<p class="smallpcenter">
+<a href="https://rysebaert.gitpages.huma-num.fr/intro_r_use_case/">Voir le diaporama</a>
+</p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="index_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="index_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: true,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Enable slide navigation via mouse wheel
+        mouseWheel: true,
+        // Hides the address bar on mobile devices
+        hideAddressBar: true,
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+        // Transition style
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+        menu: {
+          custom: false,
+          themes: false,
+          transitions: false
+        },
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'index_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+          { src: 'index_files/reveal.js-3.3.0.1/plugin/zoom-js/zoom.js', async: true },
+          { src: 'index_files/reveal.js-3.3.0.1/plugin/menu/menu.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
