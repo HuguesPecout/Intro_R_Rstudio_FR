@@ -760,8 +760,8 @@ Nb_prim_2 <- grid + splines + stats4 + tcltk + tools
 ```{r warning=FALSE, message=FALSE, eval=FALSE, include= TRUE, echo=TRUE}
 
 # Utilisez install.packages() pour installer un package en ligne de code
-# Exemple avec le package "cartography"
-install.packages("cartography")
+# Exemple avec le package "mapsf"
+install.packages("mapsf")
 
 ```
 
@@ -771,7 +771,7 @@ install.packages("cartography")
 
 ```{r warning=FALSE, message=FALSE, eval=FALSE, include= TRUE, echo=TRUE}
 
-library(cartography)
+library(mapsf)
 
 ```
 
@@ -1387,7 +1387,7 @@ library(apinsee)
 <p align="center"><img src="figure/cartography2.png"  width="140"/></p>
 </div>
 <div id="right_4">
-<p class="legend3">[**cartography**](https://github.com/riatelab/cartography/)</p>
+<p class="legend3">[**mapsf**](https://riatelab.github.io/mapsf/index.html)</p>
 <p class="legend4">Cartographie thématique</p>
 </div>
 </div>
@@ -1700,15 +1700,15 @@ Vous pouvez y accéder en ligne de commande ou en clic-bouton :</p>
 ```{r warning=FALSE, message=FALSE, eval=FALSE, include= TRUE, echo=TRUE}
 
 # Chargement de la librairie
-library(cartography)
+library(mapsf)
 
 # help() ou ?
-help(cartography)
-?cartography
+help(mapsf)
+?mapsf
 
 # Sur un package ou sur une fonction
-help(typoLayer)
-?typoLayer
+help(mf_map)
+?mf_map
 
 ```
 
@@ -1767,12 +1767,13 @@ browseVignettes()
 
 
 # Les vignettes d'un package installé
-browseVignettes("cartography")
+browseVignettes("mapsf")
+
 
 ```
 
 <p align="left" ><img src="figure/vignettescarto.png"  width="500"/></p>
-<p class="legend2" >Vignette du package [cartography](https://cran.r-project.org/web/packages/cartography/vignettes/cartography.html)</p>
+<p class="legend2" >Vignette du package [mapsf](https://riatelab.github.io/mapsf/articles/mapsf.html)</p>
 </div>
 
 
@@ -1799,7 +1800,7 @@ browseVignettes("cartography")
 
 <div id="centerter">
 <p align="center"><img src="figure/hexigraph.png"  width="225"/></p>
-<p class="legend3" >[**igraph**](https://igraph.org/redirect.html)</p>
+<p class="legend3" >[**igraph**](https://igraph.org)</p>
 <p class="legend2" style="margin-top:-10px;">*Analyse de réseau*</p>
 </div>
 
@@ -1817,11 +1818,11 @@ browseVignettes("cartography")
 
 <p class="moyp2">**La communauté R est très active et s'avère prolifique en matière de partage et de documentation** :</p>
 
-<p class="moyp2">Conférences, groupes d'utilisateur.rice.s, manuels, blogs, forums, agrégateurs, MOODLE, MOOC, vidéos, listes de diffusion, réseaux sociaux...</p>
+<p class="moyp2">Conférences, groupes d'utilisateur.rice.s, manuels, blogs, forums, agrégateurs, MOODLE, MOOC, vidéos, listes de diffusion, réseaux sociaux... ex : </p>
 
-<p align="center"><img src="figure/rladies.png"  width="200"/></p>
+<p align="center"><img src="figure/rladies.png"  width="200"/><img src="figure/africar.png"  width="240"/><img src="figure/mir.png"  width="180"/></p>
 
-<p class="moyp2">Il y en a pour tous les goûts !</p>
+<p class="moyp2">Il y en a pour tous le monde !</p>
 
 
 ## Les manuels
