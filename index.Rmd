@@ -1,7 +1,7 @@
 ---
 title: Introduction à R
-author: <h2 class="place">Base du langage, packages, Rstudio et documentation</h2>
-date: <br><img src="figure/Rzine.png" width="240"/><br><h3 class="mail">hugues.pecout@cnrs.fr</h3><img src="figure/cnrs.png" width="80" style="float:left"/><img src="figure/cist-logo-bleu_sur_blanc.png" style="float:right" width="80"/>
+author: <span style="font-size:23pt;">Base du langage, packages, Rstudio et documentation</span>
+date: <br><img src="figure/Rzine.png" width="240"/><br><span style="font-size:17pt;">hugues.pecout@cnrs.fr</span><img src="figure/cnrs.png" width="80" style="float:left"/><img src="figure/cist-logo-bleu_sur_blanc.png" style="float:right" width="80"/>
 output: 
   revealjs::revealjs_presentation:
     self_contained: FALSE
@@ -43,7 +43,7 @@ options("scipen" = 10)
 
 ```
 
-#  {data-background="figure/calculatrice.png" data-background-size="450px"}
+#  {data-background="figure/calculatrice.png" data-background-size="30%"}
 
 
 
@@ -836,7 +836,7 @@ library(apinsee)
 
 
 
-#  {data-background="figure/tidy.jpg" data-background-size="500px"}
+#  {data-background="figure/tidy.jpg" data-background-size="35%"}
 
 <p class="nrmp4">PACKAGES POPULAIRES</p>
 
@@ -1522,7 +1522,7 @@ library(apinsee)
 </div>
 
 
-#  {data-background="figure/Rstudio_logo.png" data-background-size="700px"}
+#  {data-background="figure/Rstudio_logo.png" data-background-size="50%"}
 
 ## l'IDE Rstudio
 
@@ -1645,7 +1645,7 @@ library(apinsee)
 
 
 
-#  {data-background="figure/help.png" data-background-size="300px"}
+#  {data-background="figure/help.png" data-background-size="20%"}
 
 ## Aide et documentation
 
@@ -1949,7 +1949,7 @@ browseVignettes("mapsf")
 
 
 
-# {data-background="figure/R.png" data-background-size="450px"}
+# {data-background="figure/R.png" data-background-size="28%"}
 
 
 <h3>**Réalisé avec...**</h3>
@@ -1976,7 +1976,7 @@ browseVignettes("mapsf")
 
 <p class="moyp">Consultation :</p>
 
-<p class="moyp222">https://hpecout.gitpages.huma-num.fr/Intro_R_Rstudio_FR/</p>
+<p class="moyp222">https://huguespecout.github.io/Intro_R_Rstudio_FR/</p>
 
 
 
@@ -1985,7 +1985,7 @@ browseVignettes("mapsf")
 
 <p class="moyp">Code source :</p>
 
-<p class="moyp222">https://gitlab.huma-num.fr/hpecout/Intro_R_Rstudio_FR</p>
+<p class="moyp222">https://github.com/HuguesPecout/Intro_R_Rstudio_FR/<p>
 
 
 <br>

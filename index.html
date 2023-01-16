@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
+  <meta name="author" content="Base du langage, packages, Rstudio et documentation" />
   <title>Introduction à R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -512,7 +513,7 @@ style.innerHTML = style_script;
 document.getElementsByTagName('head')[0].appendChild(style);
 </script>
 
-    <script src="index_files/header-attrs-2.11/header-attrs.js"></script>
+    <script src="index_files/header-attrs-2.14/header-attrs.js"></script>
     <link href="index_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
     <link href="index_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 </head>
@@ -522,22 +523,18 @@ document.getElementsByTagName('head')[0].appendChild(style);
 
 <section>
     <h1 class="title">Introduction à R</h1>
-    <h2 class="author"><h2 class="place">
-Base du langage, packages, Rstudio et documentation
-</h2></h2>
-    <h3 class="date"><br><img src="figure/Rzine.png" width="240"/><br>
-<h3 class="mail">
-<a href="mailto:hugues.pecout@cnrs.fr"
-class="email">hugues.pecout@cnrs.fr</a>
-</h3>
-<img src="figure/cnrs.png" width="80" style="float:left"/><img src="figure/cist-logo-bleu_sur_blanc.png" style="float:right" width="80"/></h3>
+    <h2 class="author"><span style="font-size:23pt;">Base du langage,
+packages, Rstudio et documentation</span></h2>
+    <h3 class="date"><br><img src="figure/Rzine.png" width="240"/><br><span
+style="font-size:17pt;"><a href="mailto:hugues.pecout@cnrs.fr"
+class="email">hugues.pecout@cnrs.fr</a></span><img src="figure/cnrs.png" width="80" style="float:left"/><img src="figure/cist-logo-bleu_sur_blanc.png" style="float:right" width="80"/></h3>
 </section>
 
 <section>
 <section id="section" class="title-slide slide level1"
-data-background="figure/calculatrice.png" data-background-size="450px">
+data-background="figure/calculatrice.png" data-background-size="30%">
 <h1 data-background="figure/calculatrice.png"
-data-background-size="450px"></h1>
+data-background-size="30%"></h1>
 
 </section>
 <section id="une-calculatrice" class="slide level2">
@@ -1188,19 +1185,19 @@ crochets</strong> : <br> <strong>Ma_list[[ index ]]</strong>
 <section id="r-base" class="slide level2">
 <h2>R base</h2>
 <p class="moyp22_2">
-Le langage R offre <strong>2336 fonctions de base</strong>* stockées
+Le langage R offre <strong>2321 fonctions de base</strong>* stockées
 dans 7 packages standards, <strong>installés et chargés
 automatiquement</strong> :
 </p>
 <ul class="xpucsmall">
 <ul>
-<li><strong>base</strong> = 1245 <strong>fonctions de base</strong> qui
+<li><strong>base</strong> = 1247 <strong>fonctions de base</strong> qui
 permettent à R de fonctionner comme un langage</li>
-<li><strong>utils</strong> = 243 <strong>fonctions utilitaires</strong>
+<li><strong>utils</strong> = 224 <strong>fonctions utilitaires</strong>
 (ex : installation de package, import/export…)</li>
-<li><strong>stats</strong> = 448 <strong>fonctions statistiques</strong>
+<li><strong>stats</strong> = 451 <strong>fonctions statistiques</strong>
 pour les calculs et la génération de nombres aléatoires</li>
-<li><strong>grDevices</strong> = 110 <strong>fonctions pour la gestion
+<li><strong>grDevices</strong> = 109 <strong>fonctions pour la gestion
 des périphériques graphiques</strong></li>
 <li><strong>graphics</strong> = 87 <strong>fonctions
 graphiques</strong></li>
@@ -1211,12 +1208,12 @@ d’exemples</li>
 </ul>
 </ul>
 <p class="moyp2222">
-599 fonctions supplémentaires* sont également mises à disposition par
+633 fonctions supplémentaires* sont également mises à disposition par
 l’intermédiaire de 5 autres packages pré-installés (grid, splines,
 stats4, tcltk, tools), mais qui ne sont pas chargés automatiquement.
 </p>
 <p class="xsmallpbis">
-* <em>Calculé le 2022-03-20</em>
+* <em>Calculé le 2023-01-16</em>
 </p>
 </section>
 <section id="r-base-1" class="slide level2">
@@ -1251,7 +1248,7 @@ particulières</strong> et/ou élégantes</li>
 <section id="packages-du-cran" class="slide level2">
 <h2>Packages du CRAN</h2>
 <p class="moyp2">
-<strong>18984* packages</strong> sont disponibles sur le <a
+<strong>19051* packages</strong> sont disponibles sur le <a
 href="https://cran.r-project.org/web/packages/available_packages_by_name.html"><strong><em>Comprehensive
 R Archive Network</em></strong></a>
 </p>
@@ -1272,7 +1269,7 @@ librairie</strong> :
 Il est nécessaire de charger la librairie à chaque nouvelle session R
 </p>
 <p class="xsmallpbis">
-* <em>Calculé le 2022-03-20</em>
+* <em>Calculé le 2023-01-16</em>
 </p>
 </section>
 <section id="autres" class="slide level2">
@@ -1359,8 +1356,8 @@ href="https://cran.r-project.org/web/packages/devtools/index.html"><em>devtools<
 </section></section>
 <section>
 <section id="section-1" class="title-slide slide level1"
-data-background="figure/tidy.jpg" data-background-size="500px">
-<h1 data-background="figure/tidy.jpg" data-background-size="500px"></h1>
+data-background="figure/tidy.jpg" data-background-size="35%">
+<h1 data-background="figure/tidy.jpg" data-background-size="35%"></h1>
 <p class="nrmp4">
 PACKAGES POPULAIRES
 </p>
@@ -2340,9 +2337,9 @@ href="https://rmarkdown.rstudio.com/flexdashboard/"><strong>flexdashboard</stron
 </section></section>
 <section>
 <section id="section-2" class="title-slide slide level1"
-data-background="figure/Rstudio_logo.png" data-background-size="700px">
+data-background="figure/Rstudio_logo.png" data-background-size="50%">
 <h1 data-background="figure/Rstudio_logo.png"
-data-background-size="700px"></h1>
+data-background-size="50%"></h1>
 
 </section>
 <section id="lide-rstudio" class="slide level2">
@@ -2460,8 +2457,8 @@ travail est disponible</li>
 </section></section>
 <section>
 <section id="section-3" class="title-slide slide level1"
-data-background="figure/help.png" data-background-size="300px">
-<h1 data-background="figure/help.png" data-background-size="300px"></h1>
+data-background="figure/help.png" data-background-size="20%">
+<h1 data-background="figure/help.png" data-background-size="20%"></h1>
 
 </section>
 <section id="aide-et-documentation" class="slide level2">
@@ -2840,14 +2837,14 @@ Goulet</a></li>
 </section></section>
 <section>
 <section id="section-4" class="title-slide slide level1"
-data-background="figure/R.png" data-background-size="450px">
-<h1 data-background="figure/R.png" data-background-size="450px"></h1>
+data-background="figure/R.png" data-background-size="28%">
+<h1 data-background="figure/R.png" data-background-size="28%"></h1>
 <h3>
 <strong>Réalisé avec…</strong>
 </h3>
 <p><br> <br> <br> <br> <br> <br> <br> <br></p>
 <p class="smallpcenter">
-<b>R version 4.1.1 (2021-08-10)</b>
+<b>R version 4.2.2 Patched (2022-11-10 r83330)</b>
 </p>
 </section>
 <section id="diapositives-libres-cc-by-3.0" class="slide level2">
@@ -2857,17 +2854,17 @@ data-background="figure/R.png" data-background-size="450px">
 Consultation :
 </p>
 <p class="moyp222">
-<a href="https://hpecout.gitpages.huma-num.fr/Intro_R_Rstudio_FR/"
-class="uri">https://hpecout.gitpages.huma-num.fr/Intro_R_Rstudio_FR/</a>
+<a href="https://huguespecout.github.io/Intro_R_Rstudio_FR/"
+class="uri">https://huguespecout.github.io/Intro_R_Rstudio_FR/</a>
 </p>
 <p><br></p>
 <p class="moyp">
 Code source :
 </p>
 <p class="moyp222">
-<a href="https://gitlab.huma-num.fr/hpecout/Intro_R_Rstudio_FR"
-class="uri">https://gitlab.huma-num.fr/hpecout/Intro_R_Rstudio_FR</a>
-</p>
+<a href="https://github.com/HuguesPecout/Intro_R_Rstudio_FR/"
+class="uri">https://github.com/HuguesPecout/Intro_R_Rstudio_FR/</a>
+<p>
 <p><br></p>
 </section>
 <section id="remerciements" class="slide level2">
